@@ -1,26 +1,20 @@
-package org.eclipse.che.examples;
+package com.geoTron.controller;
 
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.Controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class GreetingController implements Controller
+@Controller
+public class LaunchController
 {
-
-   @Override
+    @RequestMapping("/launch")
    public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception
    {
-      String userName = request.getParameter("user");
-      String result = "";
-      if (userName != null)
-      {
-        result = "Hello, " + userName + "!";
-      }
-
       ModelAndView view = new ModelAndView("startPage");
-      view.addObject("greeting", result);
       return view;
    }
 }
