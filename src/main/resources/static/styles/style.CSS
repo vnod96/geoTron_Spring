@@ -72,6 +72,15 @@ html,body{
   float: right;
   right: -50%;
 }
+#last_updated{
+  position: relative;
+  top: -15%;
+  float: right;
+  background: black;
+  color: white;
+  right: -50%;
+}
+
 #locate{
   float : left;
   position: absolute;

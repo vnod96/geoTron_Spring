@@ -1,14 +1,19 @@
 
 
-var map = L.map('map').setView([13.067439, 80.237617], 20);
-
+var map = L.map('map').setView([20.5937, 78.9629], 4.25);
+var markerArray = [];
 L.tileLayer('https://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png ', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 var token = "95b4b8c2aa47849f71608990365ec1df5cd0175d";
+var city;
 $('#search').click(function(){
 
   searchAQI($('#place').val());
+});
+$('#locate').click(function(){
+
+  showCustomers(city);
 });
 function searchAQI(keyword){
   $.getJSON("https://api.waqi.info/search/?token="+token+"&keyword="+keyword,function(response){
@@ -18,17 +23,21 @@ function searchAQI(keyword){
       var lang = response.data.city.geo[0];
       var long = response.data.city.geo[1];
       var loc = response.data.city.name;
+      city = loc;
       var aqi = response.data.aqi;
+      var last_updated = response.data.time.s;
+      $('#last_updated').html('Last Updated on  : '+last_updated);
       //response.data[0].station.geo[0]
       //var popup = $("<div>");
       //popup.append($("<b>")).html(response.data[0].station.name);
       //popup.append($("<i>")).html(response.data[0].aqi);
       //console.log(popup);
-      map.setView([lang, long], 20);
-      L.marker([lang, long]).addTo(map)
-      .bindPopup("<div><b>"+loc+"</b>"+colorizePOPUP(aqi)+"</div>")
-      .openPopup();
-
+      map.setView([lang, long], 13);
+     // L.marker([lang, long]).addTo(map)
+      //.bindPopup("<div><b>"+loc+"</b>"+colorizePOPUP(aqi)+"</div>")
+      //.openPopup();
+      markerArray.push(L.marker([lang, long]).bindPopup("<div><b>"+loc+"</b>"+colorizePOPUP(aqi)+"</div>").openPopup());
+      var group = L.featureGroup(markerArray).addTo(map);
       var names = {
     			pm25: "PM<sub>2.5</sub>",
     			pm10: "PM<sub>10</sub>",
@@ -53,8 +62,9 @@ function searchAQI(keyword){
       			tr.append($("<td>").html(colorize(aqi,specie)));
       			table.append(tr);
       		}
-          $( "#locate" ).animate({left: 0}, 500 );
-          $( "#poll_info" ).animate({right: 0}, 500 );
+          $( "#locate" ).animate({left: 0}, 1000 );
+          $( "#poll_info" ).animate({right: 0}, 1000 );
+          $( "#last_updated" ).animate({right: 0}, 500 );
 
     });
 
@@ -110,4 +120,54 @@ function searchAQI(keyword){
     .css("background-color",spectrum[i].b)
     .css("color",spectrum[i].f);
 }
+}
+
+var customer_data = [{
+  "Name"  : "Amar",
+  "Policy Number" : "123",
+  "Vehicle" : "Audi",
+  "Fuel"  : "Petrol",
+  "Premium Amount"  : "12000",
+  "location" : {
+    "city"  : "Chennai",
+    "lat" : 13.1422,
+    "lon" : 80.2370
+  }
+},
+{
+  "Name"  : "Akbar",
+  "Policy Number" : "1234",
+  "Vehicle" : "BMW",
+  "Fuel"  : "Petrol",
+  "Premium Amount"  : "10000",
+  "location" : {
+    "city"  : "Chennai",
+    "lat" : 13.0905,
+    "lon" : 80.2588
+  }
+},
+{
+  "Name"  : "Antony",
+  "Policy Number" : "12345",
+  "Vehicle" : "Tesla",
+  "Fuel"  : "Electric",
+  "Premium Amount"  : "6500",
+  "location" : {
+    "city"  : "Chennai",
+    "lat" : 13.0571,
+    "lon" : 80.2751
+  }
+}];
+
+function showCustomers(city){
+  
+  $.each(customer_data,function(i,customer){
+    if(city.indexOf(customer.location.city) > -1){
+      console.log(customer);
+      markerArray.push(L.marker([customer.location.lat, customer.location.lon]));
+      
+    }
+  }); 
+  var group = L.featureGroup(markerArray).addTo(map);
+      map.fitBounds(group.getBounds());
 }
