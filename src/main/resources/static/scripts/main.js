@@ -7,6 +7,8 @@ L.tileLayer('https://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png ', {
 }).addTo(map);
 var token = "95b4b8c2aa47849f71608990365ec1df5cd0175d";
 var city;
+var eIcon = L.divIcon({className : 'electric-icon'});
+var pIcon = L.divIcon({className : 'petrol-icon'});
 $('#search').click(function(){
 
   searchAQI($('#place').val());
@@ -18,10 +20,18 @@ $('#locate').click(function(){
 function searchAQI(keyword){
   $.getJSON("https://api.waqi.info/search/?token="+token+"&keyword="+keyword,function(response){
     console.log(response);
-    $.getJSON("https://api.waqi.info/feed/@"+response.data[0].uid+"/?token="+token,function(response){
+    var uid;
+    $.each(response.data,function(i,data){
+      if(data.uid == 8185) {
+        uid = 8185;
+        return false;
+      }
+      else uid = response.data[0].uid;
+    });
+    $.getJSON("https://api.waqi.info/feed/@"+uid+"/?token="+token,function(response){
       console.log(response);
-      var lang = response.data.city.geo[0];
-      var long = response.data.city.geo[1];
+      var lang = response.data.city.geo[1];
+      var long = response.data.city.geo[0];
       var loc = response.data.city.name;
       city = loc;
       var aqi = response.data.aqi;
@@ -33,11 +43,10 @@ function searchAQI(keyword){
       //popup.append($("<i>")).html(response.data[0].aqi);
       //console.log(popup);
       map.setView([lang, long], 13);
-     // L.marker([lang, long]).addTo(map)
-      //.bindPopup("<div><b>"+loc+"</b>"+colorizePOPUP(aqi)+"</div>")
-      //.openPopup();
-      markerArray.push(L.marker([lang, long]).bindPopup("<div><b>"+loc+"</b>"+colorizePOPUP(aqi)+"</div>").openPopup());
-      var group = L.featureGroup(markerArray).addTo(map);
+      L.marker([lang, long]).addTo(map)
+      .bindPopup("<div><b>"+loc+"</b>"+colorizePOPUP(aqi)+"</div>")
+      .openPopup();
+      
       var names = {
     			pm25: "PM<sub>2.5</sub>",
     			pm10: "PM<sub>10</sub>",
@@ -158,16 +167,28 @@ var customer_data = [{
     "lon" : 80.2751
   }
 }];
-
+var group = L.featureGroup();
 function showCustomers(city){
-  
+  group.clearLayers();
   $.each(customer_data,function(i,customer){
     if(city.indexOf(customer.location.city) > -1){
       console.log(customer);
-      markerArray.push(L.marker([customer.location.lat, customer.location.lon]));
+      let marker;
+      if(customer.Fuel == 'Electric'){
+        
+        marker = L.marker([customer.location.lat, customer.location.lon],{icon : eIcon});
+      }
+      else{
+        marker = L.marker([customer.location.lat, customer.location.lon],{icon : pIcon});
+      }
+      group.addLayer(marker);
       
     }
   }); 
-  var group = L.featureGroup(markerArray).addTo(map);
+  
+  group.addTo(map);
+    
+  
       map.fitBounds(group.getBounds());
+      map.setZoom(map.getZoom() - 1);
 }
