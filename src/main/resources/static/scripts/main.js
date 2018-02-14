@@ -2,6 +2,7 @@
 
 var map = L.map('map').setView([20.5937, 78.9629], 4.25);
 var markerArray = [];
+var loc_group = L.featureGroup();
 L.tileLayer('https://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png ', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
@@ -11,10 +12,10 @@ var eIcon = L.divIcon({className : 'electric-icon'});
 var pIcon = L.divIcon({className : 'petrol-icon'});
 $('#search').click(function(){
 
+  loc_group.clearLayers();
   searchAQI($('#place').val());
 });
 $('#locate').click(function(){
-
   showCustomers(city);
 });
 function searchAQI(keyword){
@@ -30,8 +31,8 @@ function searchAQI(keyword){
     });
     $.getJSON("https://api.waqi.info/feed/@"+uid+"/?token="+token,function(response){
       console.log(response);
-      var lang = response.data.city.geo[1];
-      var long = response.data.city.geo[0];
+      var lang = response.data.city.geo[0];
+      var long = response.data.city.geo[1];
       var loc = response.data.city.name;
       city = loc;
       var aqi = response.data.aqi;
@@ -43,10 +44,9 @@ function searchAQI(keyword){
       //popup.append($("<i>")).html(response.data[0].aqi);
       //console.log(popup);
       map.setView([lang, long], 13);
-      L.marker([lang, long]).addTo(map)
-      .bindPopup("<div><b>"+loc+"</b>"+colorizePOPUP(aqi)+"</div>")
+      let locQ = L.marker([lang, long]);
+      loc_group.addLayer(locQ).addTo(map).bindPopup("<div><b>"+loc+"</b>"+colorizePOPUP(aqi)+"</div>")
       .openPopup();
-      
       var names = {
     			pm25: "PM<sub>2.5</sub>",
     			pm10: "PM<sub>10</sub>",
@@ -190,9 +190,14 @@ function showCustomers(city){
     
   
       map.fitBounds(group.getBounds());
-      map.setZoom(map.getZoom() - 1);
+      //map.setZoom(map.getZoom() - 1);
 }
 
-$.getJSON("/customers/Chennai",function(response){
+/* $.getJSON("/customers/Chennai",function(response){
   console.log(response);
-});
+}); 
+var d="36 Veerappan street, Sowcarpet";
+$.getJSON("https://nominatim.openstreetmap.org/search?q="+d+"&format=json&polygon=1&addressdetails=1",function(response){
+  console.log(response);
+}); */
+//https://nominatim.openstreetmap.org/search?q=135%20pilkington%20avenue,%20birmingham&format=json&polygon=1&addressdetails=1
