@@ -192,3 +192,7 @@ function showCustomers(city){
       map.fitBounds(group.getBounds());
       map.setZoom(map.getZoom() - 1);
 }
+
+$.getJSON("/customers/Chennai",function(response){
+  console.log(response);
+});
