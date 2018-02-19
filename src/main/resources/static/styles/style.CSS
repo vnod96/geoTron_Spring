@@ -10,10 +10,18 @@ html,body{
 }
 
 .electric-icon{
-  background: green;
+  width: 20px;
+  height: 20px;
+  background-image: url(../resources/images/recharge-point.png);
+  background-size: 20px;
+  outline: none;
 }
 .petrol-icon{
-  background: red;
+  width: 20px;
+  height: 20px;
+  background-image: url(../resources/images/icon-car.png);
+  background-size: 20px;
+  outline: none;
 }
 
 .icon{
@@ -22,94 +30,107 @@ html,body{
     position: absolute;
     height: 6%;
     width: 25%;
-  
+
 }
 .icon > img{
   width: 100%;
   height: 100%;
-}
-.form{
-    top: 25%;
-    width: 100%;
-    height: 60%;
-    position: relative;
-
 }
 #map{
   float: left;
     width: 70%;
     height: 100%;
       z-index: 12;
-    box-shadow: rgba(0, 0, 0, 0.2) -2px 0px 15px;
 }
 #ui{
   float: left;
   z-index: -12;
   width: 30%;
   height: 100%;
+  background: url(../resources/images/toner_RY2tKRw04x4.png);
+  background-position:cover;
 }
-#ui::before{
-  width: 40%;
-  height: 100%;
-  z-index: -12;
+input , button{
+outline: none;
+
+}
+.form{
+    top: 22%;
+    width: 90%;
+    height: 42px;
+    position: relative;
+    margin-left: 10%;
+
 }
 .textinput{
-  float: right;
+  float: left;
+  font-size: 1em;
   height: 40px;
-  width: 250px;
-  border: 1px solid;
-  border-right-width: 0px;
+  width: 270px;
+  background: rgba(28, 98, 158, 0.04);
+  border: 1px solid #1c629e;
   padding-left: 1em;
-  z-index: -5;
+  border-top-left-radius: .8em;
+  border-bottom-left-radius: .8em;
 }
 .button{
-    position: absolute;
-    top: 15%;
-    width: 150px;
-    right: 0;
-    float: right;
-    background: transparent;
-    border: 1px solid black;
-    border-right-width: 0px;
-    color:black;
-    height: 40px;
-    outline: none;
-    /**/
+  float: left;
+  color: black;
+  height: 40px;
+  width: 50px;
+  border-top-right-radius: .8em;
+  border-bottom-right-radius: .8em;
+  border: 1px solid #1c629e;
+  background: #1c629e;
 }
-.button:active{
-    background: rgba(0, 0, 0, 0.05);
+.search{
+    vertical-align: middle;
+    height: 16px;
+    background-image: url(../resources/images/search-16.png);
+    width: 16px;
+    display: inline-block;
 }
-#ui::before{
-  opacity: .05;
-  content: "";
-  position: absolute;
-  background: url(../resources/images/toner_RY2tKRw04x4.png);
-  background-position: -630px;
+#resultDIV{
+    position: relative;
+    top: 25%;
+    margin-left: 10%;
+    font-size: 1.5em;
+    padding: 15px 25px;
+    width: 270px;
+    border-radius: .8em;
+    background: rgba(78, 78, 78, 0.26);
 }
 #poll_info{
-  position: relative;
-  top: -15%;
+  width: 270px;
+}
+.poll-row{
+  padding: 8px 12px 0;
+  margin-bottom: 5px;
+  height: 36px;
+  border-radius: .3em;
+  background: rgba(255, 255, 255, 0.4);
+}
+.poll-data{
+  font-size: 1em;
+  min-width: 30px;
+  text-align: center;
+  border-radius: 0.3em;
+  padding: 1 8px;
   float: right;
-  right: -50%;
 }
 #last_updated{
-  position: relative;
-  top: -15%;
-  float: right;
-  background: black;
-  color: white;
-  right: -50%;
+  font-size: .7em;
+  padding-bottom: 10px;
 }
 
 #locate{
-  float : left;
-  position: absolute;
-  bottom:20%;
-  left:-20%;
-  background: transparent;
-  border: 1px solid black;
-  border-left-width: 0px;
-  color:black;
+  margin-top: 5px;
+  background: #1b619e;
+  color: white;
+  border: 0;
   height: 40px;
-  outline: none;
+  padding: 0;
+  width: 270px;
+  border-radius: .5em;
+  font-size: .7em;
 }

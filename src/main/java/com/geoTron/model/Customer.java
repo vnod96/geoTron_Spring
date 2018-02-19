@@ -1,22 +1,38 @@
 package com.geoTron.model;
 
 public class Customer {
+	String uid;
 	String name;
 	int policy_num;
-	String vehicle;
-	String fuel;
+	String address;
+	int vehicle_number;
+	String vehicle_type;
+	int premium;
 	String city;
 	double lat;
 	double lon;
-	public Customer(String name, int policy_num, String vehicle, String fuel, String city, double lat, double lon) {
+	
+	public Customer() {
 		super();
+	}
+	public Customer(String uid, String name, int policy_num, String address, int vehicle_number, String vehicle_type, int premium, String city, double lat, double lon) {
+		super();
+		this.uid = uid;
 		this.name = name;
 		this.policy_num = policy_num;
-		this.vehicle = vehicle;
-		this.fuel = fuel;
+		this.address = address;
+		this.vehicle_number = vehicle_number;
+		this.vehicle_type = vehicle_type;
+		this.premium = premium;
 		this.city = city;
 		this.lat = lat;
 		this.lon = lon;
+	}
+	public String getUid() {
+		return uid;
+	}
+	public void setUid(String uid) {
+		this.uid = uid;
 	}
 	public String getName() {
 		return name;
@@ -30,17 +46,29 @@ public class Customer {
 	public void setPolicy_num(int policy_num) {
 		this.policy_num = policy_num;
 	}
-	public String getVehicle() {
-		return vehicle;
+	public String getAddress() {
+		return address;
 	}
-	public void setVehicle(String vehicle) {
-		this.vehicle = vehicle;
+	public void setAddress(String address) {
+		this.address = address;
 	}
-	public String getFuel() {
-		return fuel;
+	public int getVehicleNumber() {
+		return vehicle_number;
 	}
-	public void setFuel(String fuel) {
-		this.fuel = fuel;
+	public void setVehicleNumber(int vehicle_number) {
+		this.vehicle_number = vehicle_number;
+	}
+	public String getVehicleType() {
+		return vehicle_type;
+	}
+	public void setVehicleType(String vehicle_type) {
+		this.vehicle_type = vehicle_type;
+	}
+	public int getPremiun() {
+		return premium;
+	}
+	public void setPremium(int premium) {
+		this.premium = premium;
 	}
 	public String getCity() {
 		return city;
