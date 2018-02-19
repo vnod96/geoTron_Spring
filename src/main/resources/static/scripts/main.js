@@ -8,8 +8,8 @@ L.tileLayer('https://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png ', {
 }).addTo(map);
 var token = "95b4b8c2aa47849f71608990365ec1df5cd0175d";
 var city;
-var eIcon = L.divIcon({className : 'electric-icon',iconSize:[25,25]});
-var pIcon = L.divIcon({className : 'petrol-icon'});
+var eIcon = L.divIcon({className : 'electric-icon',iconSize:[35,35]});
+var pIcon = L.divIcon({className : 'petrol-icon',iconSize:[35,35]});
 var cities = {"chennai":"3757","bangalore":"3758","los angeles":"243"};
 var spectrum = [
 {a:0,  b:"#cccccc",f:"#ffffff"},
@@ -173,6 +173,8 @@ function showCustomers(city){
         else{
           marker = L.marker([customer.lat, customer.lon],{icon : pIcon});
         }
+        marker.uid = customer.uid;
+        marker.on('click',showCustomerInfo);
         group.addLayer(marker);
     });
   
@@ -183,7 +185,12 @@ function showCustomers(city){
       //map.setZoom(map.getZoom() - 1);
     });
 }
-
+function showCustomerInfo(e){
+  let uid = e.target.uid;
+  $.getJSON('/customers/uid/'+uid,function(customerInfo){
+    console.log(customerInfo);
+  });
+}
 /* $.getJSON("/customers/Chennai",function(response){
   console.log(response);
 });

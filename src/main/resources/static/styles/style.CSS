@@ -10,17 +10,17 @@ html,body{
 }
 
 .electric-icon{
-  width: 20px;
-  height: 20px;
+  width: 35px;
+  height: 35px;
   background-image: url(../resources/images/recharge-point.png);
-  background-size: 20px;
+  background-size: 35px;
   outline: none;
 }
 .petrol-icon{
-  width: 20px;
-  height: 20px;
+  width: 35px;
+  height: 35px;
   background-image: url(../resources/images/icon-car.png);
-  background-size: 20px;
+  background-size: 35px;
   outline: none;
 }
 
