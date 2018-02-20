@@ -134,3 +134,15 @@ outline: none;
   border-radius: .5em;
   font-size: .7em;
 }
+
+.popup{
+  position: absolute;
+  top: 7%;
+  left: 15%;
+  z-index: 150;
+  width: 70%;
+  height: 86%;
+  background: white;
+  border: 1px solid #1b619e;
+  border-radius: .6em;
+}

@@ -188,9 +188,16 @@ function showCustomers(city){
 function showCustomerInfo(e){
   let uid = e.target.uid;
   $.getJSON('/customers/uid/'+uid,function(customerInfo){
-    console.log(customerInfo);
+    openCustomerPOPUP(customerInfo);
   });
 }
+
+function openCustomerPOPUP(customer){
+  var popup = $("<div/>");
+  popup.load("popUp.html");
+  $('body').append(popup);
+}
+
 /* $.getJSON("/customers/Chennai",function(response){
   console.log(response);
 });
