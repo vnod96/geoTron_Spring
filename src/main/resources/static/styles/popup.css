@@ -1,0 +1,65 @@
+.popup{
+  position: absolute;
+  top: 7%;
+  left: 15%;
+  z-index: 150;
+  width: 70%;
+  height: 86%;
+  background: url(../resources/images/toner_RY2tKRw04x4.png);
+  border: 1px solid #1b619e;
+  border-radius: .6em;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.55);
+}
+#close{
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  background: url(../resources/images/close.png);
+  top: 10px;
+  right: 10px;
+  color: red;
+}
+.mainContainer{
+  margin: 25px;
+  display: inline-flex;
+}
+.containerpop{
+  margin-right: 10px;
+  width: 45%;
+padding: 15px;
+background: rgba(255, 255, 255, 0.65);
+border: 1px solid #1b619e;
+border-radius: .6em;
+}
+.heading{
+  background: #1b619e;
+color: white;
+font-size: 1.8em;
+font-weight: bold;
+border-radius: .3em;
+padding: 5px 15px;
+}
+.infoCustomer{
+  display: table;
+  width: 100%;
+  font-size: 1.3em;
+}
+.poprow{
+  display: table-row;
+}
+.label,.labelValue{
+  display: table-cell;
+  padding: 3px;
+}
+.labelValue{
+}
+.label{
+  width: 25%;
+  text-align: right;
+  font-weight: bold;
+}
+#send{
+  position: absolute;
+    bottom: 25px;
+    left: calc((100% - 270px)/2);
+}
