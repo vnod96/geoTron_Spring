@@ -64,7 +64,7 @@ function feedUIDtoAPI(uid, latlngs, center){
     map.setView([lang, long], 13);
     //let locQ = L.marker([lang, long]);
     //loc_group.addLayer(locQ).addTo(map).bindPopup("<div><b>"+loc+"</b>"+colorizePOPUP(aqi)+"</div>").openPopup();
-    var polygon = L.polygon(latlngs, {color: aqiColor(aqi),opacity:0.5,fillOpacity:.1});
+    var polygon = L.polygon(latlngs, {color: aqiColor(aqi),opacity:0.5,fillOpacity:.3});
     loc_group.addLayer(polygon).addTo(map).bindPopup("<div><b>"+city+"</b>"+colorizePOPUP(aqi)+"</div>").openPopup();
     map.fitBounds(polygon.getBounds());
     map.setView(center);
@@ -188,14 +188,18 @@ function showCustomers(city){
 function showCustomerInfo(e){
   let uid = e.target.uid;
   $.getJSON('/customers/uid/'+uid,function(customerInfo){
+    console.log(customerInfo);
     openCustomerPOPUP(customerInfo);
   });
 }
 
 function openCustomerPOPUP(customer){
-  var popup = $("<div/>");
-  popup.load("popUp.html");
-  $('body').append(popup);
+  var popup = $("#popBox");
+  popup.load("popUp.html",function(){
+    console.log($(this));
+    setValues(customer);
+  });
+  //
 }
 
 /* $.getJSON("/customers/Chennai",function(response){
