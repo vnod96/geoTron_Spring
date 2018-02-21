@@ -25,12 +25,27 @@ html,body{
 }
 
 .icon{
-    top: 10%;
-    left: -1px;
-    position: absolute;
-    height: 6%;
-    width: 25%;
+  font-size: 2.4em;
+  font-weight: bold;
+  color: #1c629e;
+  /* border: 1px solid blue; */
+  top: 5%;
+  margin-left: 1%;
+  position: absolute;
+  height: 6%;
+  width: 29%;
+  z-index: 120;
 
+}
+.icon:before{
+  content: "";
+  background: #3690115e;
+  position: absolute;
+  top: 1%;
+  left: -7%;
+  width: 12%;
+  height: 160%;
+  z-index: -1;
 }
 .icon > img{
   width: 100%;
