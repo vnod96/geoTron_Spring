@@ -4,14 +4,30 @@ function closeCustomerinfo(){
 
 function setValues(customer,aqi){
     $('#pop_name').html(customer.name);
-    $('#pop_pn').html(customer.policy_num);
     $('#pop_address').html(customer.address);
-    $('#pop_vehicle').html(customer.vehicleNumber+ '  ('+ customer.vehicleType +')');
-    $('#pop_premium').html(customer.premiun);
-    $('#pop_discount').html(calcRevisedPremium(customer.premiun,aqi));
+    $('#pop_phone').html(customer.phone_no);
+    $('#pop_license').html(customer.license_no);
+    $('#pop_vin').html(customer.vehicle.vin);
+    $('#pop_vehicle').html(customer.vehicle.vehicle_type);
+    $('#pop_plate').html(customer.vehicle.plate_no);
+    $('#pop_odometer').html(customer.vehicle.odometer);
+    $('#pop_pn').html(customer.policy.pol_no);
+    $('#pop_period').html(customer.policy.pol_period);
+    $('#pop_bodily').html(customer.policy.bodily);
+    $('#pop_collision').html(customer.policy.collision);
+    $('#pop_comp').html(customer.policy.comprehensive);
+    $('#pop_deductibles').html(customer.policy.deductibles);
+    $('.pop_premium').html(customer.policy.premium);
+    if(customer.vehicleType == 'Gasoline'){
+        calcRevisedPremium(customer.policy.premium,aqi);
+    }else{
+
+    }
+    
 }
 
 function calcRevisedPremium(premium,aqi){
+    
     var spectrum = [
         {a:0,  b:0},
         {a:50, b:5},
@@ -31,6 +47,7 @@ function calcRevisedPremium(premium,aqi){
             percentage = spectrum[i].b;
         }
     }
-
-    return (premium*((100 - percentage)/100));
+    $('#pop_discount').html(percentage +'%');
+    $('.pop_premium_aqi').html(premium*((100 - percentage)/100));
+    
 }

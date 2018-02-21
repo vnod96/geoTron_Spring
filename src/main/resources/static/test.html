@@ -24,13 +24,7 @@
                      <div class="poprow">
                       <div class="label">License #:</div><div id="pop_license"  class="labelValue"></div>
                       </div>
-                      <div class="poprow">
-                          <div class="label">Policy Number:</div><div id="pop_pn" class="labelValue"></div>
-                          </div>
-                          <div class="poprow">
-                              <div class="label">Policy Period:</div><div id="pop_period" class="labelValue"></div>
-                              </div>
-                  
+                      
                   </div>
               </div>
               <div class="containerpop">
@@ -54,24 +48,55 @@
                 </div>
                 <div class="containerpop premiumpop">
                     <div class="heading">
-                      Vehicle Information
+                      Premium Information
                     </div>
                     <div class="infoCustomer">
+                      <div class="poprow">
+                        <div class="label">Policy Number:</div><div id="pop_pn" class="labelValue"></div>
+                      </div>
+                      <div class="poprow">
+                          <div class="label">Policy Period:</div><div id="pop_period" class="labelValue"></div>
+                      </div>
+                      <div class="poprow">
+                        <div class="label">Current Premium:</div><div class="pop_premium" class="labelValue"></div>
+                    </div>
+                      
+                    </div>
+                    <div class="heading" style="margin-top:24px;">
+                      Coverage
+                     </div>
+                     <div class="infoCustomer">
+                      <div class="poprow">
+                        <div class="label">Bodily Injury Coverage:</div><div id="pop_bodily" class="labelValue"></div>
+                        </div>
                         <div class="poprow">
-                            <div class="label">VIN #:</div><div id="pop_vin" class="labelValue"></div>
-                            </div>
+                            <div class="label">Auto Collision Coverage:</div><div id="pop_collision" class="labelValue"></div>
+                        </div>
+                        <div class="poprow">
+                          <div class="label">Auto Comprehensive Coverage:</div><div id="pop_comp" class="labelValue"></div>
+                          </div>
                       <div class="poprow">
-                      <div class="label">Vehicle Type:</div><div id="pop_vehicle" class="labelValue"></div>
+                        <div class="label">Deductibles:</div><div id="pop_deductibles" class="labelValue"></div>
                       </div>
                       <div class="poprow">
-                      <div class="label">Plate #:</div><div id="pop_plate" class="labelValue"></div>
+                        <div class="label">Discount:</div><div id="pop_discount" class="labelValue"></div>
                       </div>
+                      <hr>
                       <div class="poprow">
-                      <div class="label">Odometer:</div><div id="pop_odometer" class="labelValue"></div>
+                        <div class="label">Total Premium:</div><div class="pop_premium_aqi" class="labelValue"></div>
                       </div>
                     </div>
+
                   </div>
-                <input type="submit" id="send" name="send"  class="buttonDIV"  value="SEND MAIL"/>
+                  <div class="containerpop messagemail">
+                    <div class="heading">
+                      Message
+                    </div>
+                    <div class="infoCustomer" style="padding-top:5px;"> 
+                      Your premium will reduced to <span class="pop_premium_aqi"></span> from <span class="pop_premium" ></span>  if you opt to buy a electric vehicle.  
+                    </div>
+                  </div>
+                <input type="submit" id="send" name="send"  class="buttonDIV" onclick="closeCustomerinfo();alert('The mail is sent');" value="SEND MAIL"/>
             </div>
     
           </div>

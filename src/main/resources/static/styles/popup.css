@@ -52,6 +52,7 @@ padding: 1px 10px;
   padding-top: 3px;
 }
 .labelValue{
+  padding-left: 8px;
 }
 .label{
   width: 30%;
@@ -68,4 +69,10 @@ padding: 1px 10px;
   position: absolute;
   top: 25px;
   right: 25px;
+}
+.premiumpop .label{
+  width: 55%;
+}
+.messagemail{
+  width: 96%;
 }

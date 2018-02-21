@@ -15,7 +15,7 @@ public class Customer {
 	public Customer() {
 		super();
 	}
-	public Customer(String uid, String name, String address,String phone_no, String license_no, String vehicle_type,String city, double lat, double lon,Vehicle vehicle, PolicyCoverage policy) {
+	public Customer(String uid, String name, String phone_no,String license_no, String address, String vehicle_type,String city, double lat, double lon,Vehicle vehicle, PolicyCoverage policy) {
 		super();
 		this.uid = uid;
 		this.name = name;
