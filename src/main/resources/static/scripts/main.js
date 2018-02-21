@@ -8,6 +8,7 @@ L.tileLayer('https://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png ', {
 }).addTo(map);
 var token = "95b4b8c2aa47849f71608990365ec1df5cd0175d";
 var city;
+var global_aqi;
 var eIcon = L.divIcon({className : 'electric-icon',iconSize:[35,35]});
 var pIcon = L.divIcon({className : 'petrol-icon',iconSize:[35,35]});
 var cities = {"chennai":"3757","bangalore":"3758","los angeles":"243"};
@@ -58,14 +59,14 @@ function feedUIDtoAPI(uid, latlngs, center){
     var lang = response.data.city.geo[0];
     var long = response.data.city.geo[1];
     var loc = response.data.city.name;
-    var aqi = response.data.aqi;
+    global_aqi = response.data.aqi;
     var last_updated = response.data.time.s;
     $('#last_updated').html('Last Updated on  : '+last_updated);
     map.setView([lang, long], 13);
     //let locQ = L.marker([lang, long]);
     //loc_group.addLayer(locQ).addTo(map).bindPopup("<div><b>"+loc+"</b>"+colorizePOPUP(aqi)+"</div>").openPopup();
-    var polygon = L.polygon(latlngs, {color: aqiColor(aqi),opacity:0.5,fillOpacity:.3});
-    loc_group.addLayer(polygon).addTo(map).bindPopup("<div><b>"+city+"</b>"+colorizePOPUP(aqi)+"</div>").openPopup();
+    var polygon = L.polygon(latlngs, {color: aqiColor(global_aqi),opacity:0.5,fillOpacity:.3});
+    loc_group.addLayer(polygon).addTo(map).bindPopup("<div><b>"+city+"</b>"+colorizePOPUP(global_aqi)+"</div>").openPopup();
     map.fitBounds(polygon.getBounds());
     map.setView(center);
     var names = {
@@ -197,7 +198,7 @@ function openCustomerPOPUP(customer){
   var popup = $("#popBox");
   popup.load("popUp.html",function(){
     console.log($(this));
-    setValues(customer);
+    setValues(customer,global_aqi);
   });
   //
 }

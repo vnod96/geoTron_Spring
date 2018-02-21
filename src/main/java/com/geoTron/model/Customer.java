@@ -5,7 +5,7 @@ public class Customer {
 	String name;
 	int policy_num;
 	String address;
-	int vehicle_number;
+	String vehicle_number;
 	String vehicle_type;
 	int premium;
 	String city;
@@ -15,7 +15,7 @@ public class Customer {
 	public Customer() {
 		super();
 	}
-	public Customer(String uid, String name, int policy_num, String address, int vehicle_number, String vehicle_type, int premium, String city, double lat, double lon) {
+	public Customer(String uid, String name, int policy_num, String address, String vehicle_number, String vehicle_type, int premium, String city, double lat, double lon) {
 		super();
 		this.uid = uid;
 		this.name = name;
@@ -52,10 +52,10 @@ public class Customer {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public int getVehicleNumber() {
+	public String getVehicleNumber() {
 		return vehicle_number;
 	}
-	public void setVehicleNumber(int vehicle_number) {
+	public void setVehicleNumber(String vehicle_number) {
 		this.vehicle_number = vehicle_number;
 	}
 	public String getVehicleType() {
