@@ -7,13 +7,15 @@ import org.springframework.stereotype.Component;
 
 import com.geoTron.model.Customer;
 import com.geoTron.model.CustomerMin;
+import com.geoTron.model.PolicyCoverage;
+import com.geoTron.model.Vehicle;
 
 @Component
 public class CustomerDataService {
 	private static List<Customer> customers = new ArrayList<Customer>();
 	static {
-		Customer customer1 = new Customer("C1234", "Akash",56789, "Ambattur, Chennai, Tamilnadu",	"TN75340", "Gasoline", 2000, "Chennai", 13.1022, 80.1829);
-		Customer customer2 = new Customer("C1235", "Bharathi", 56790, "Navalur, Chennai, Tamilnadu", "TN75341", "Electric", 2000, "Chennai", 12.8449, 80.2172);
+		Customer customer1 = new Customer("C1234", "Akash","09912342345","QWE1234", "Ambattur, Chennai, Tamilnadu", "Gasoline", "Chennai", 13.1022, 80.1829, new Vehicle("1ABCD123123B","SUV","TN75340",15000),new PolicyCoverage("AUT56723","12/2/2011 - 12/2/2020",100000,250,250,250,2000));
+		/*Customer customer2 = new Customer("C1235", "Bharathi", 56790, "Navalur, Chennai, Tamilnadu", "TN75341", "Electric", 2000, "Chennai", 12.8449, 80.2172);
 		Customer customer3 = new Customer("C1236", "Dinesh", 56791, "Adayar,  Chennai, Tamilnadu", "TN85340", "Electric", 2000, "Chennai", 13.0287, 80.2277);
 		Customer customer4 = new Customer("C1237", "Ganesh", 56792, "Perungudi,  Chennai, Tamilnadu", "TN75640", "Gasoline", 2000, "Chennai", 12.9488, 80.1981);
 		Customer customer5 = new Customer("C1238", "Hema", 56793, "Taiyur, Kanchipuram, Tamil Nadu", "TN75040", "Gasoline", 2000, "Chennai", 12.7719, 80.1866);
@@ -40,9 +42,9 @@ public class CustomerDataService {
 		Customer customer26 = new Customer("L1260","Wesley",56815,"State Street, Brooklyn Heights, Boyle Heights, Los Angeles, Los Angeles County, California, 90013, United States of America","LA40576","Gasoline",3000,"Los Angeles",34.045, -118.2179);
 		Customer customer27 = new Customer("L1261","Brent",56816,"Mission Road, Mission Junction, Little Tokyo Historic District, Los Angeles, Los Angeles County, California, 90012, United States of America","LA02576","Electric",3000,"Los Angeles",34.0576, -118.2215);
 		Customer customer28 = new Customer("L1262","Karl",56817,"Montebello, East 3rd Street, Little Tokyo, Little Tokyo Historic District, Los Angeles, Los Angeles County, California, 90012, United States of America","LA00576","Electric",3000,"Los Angeles",34.04821, -118.24387);
-		Customer customer29 = new Customer("L1263","Hogh",56818,"1210, Industrial Street, Skid Row, Little Tokyo Historic District, Los Angeles, Los Angeles County, California, 90021, United States of America","LA42506","Electric",3000,"Los Angeles",34.03801, -118.24154);
+		Customer customer29 = new Customer("L1263","Hogh",56818,"1210, Industrial Street, Skid Row, Little Tokyo Historic District, Los Angeles, Los Angeles County, California, 90021, United States of America","LA42506","Electric",3000,"Los Angeles",34.03801, -118.24154);*/
 		customers.add(customer1);
-		customers.add(customer2);
+		/*customers.add(customer2);
 		customers.add(customer3);
 		customers.add(customer4);
 		customers.add(customer5);
@@ -69,7 +71,7 @@ public class CustomerDataService {
 		customers.add(customer26);
 		customers.add(customer27);
 		customers.add(customer28);
-		customers.add(customer29);
+		customers.add(customer29);*/
 	}
 	public List<CustomerMin> retriveCustomerBasedOnLoc(String loc) {
 		List<CustomerMin> customers_loc = new ArrayList<CustomerMin>();

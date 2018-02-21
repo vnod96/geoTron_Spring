@@ -20,13 +20,13 @@
   color: red;
 }
 .mainContainer{
-  margin: 25px;
-  display: inline-flex;
+  margin: 25px; 
 }
 .containerpop{
-  margin-right: 10px;
   width: 45%;
-padding: 15px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+padding: 10px;
 background: rgba(255, 255, 255, 0.65);
 border: 1px solid #1b619e;
 border-radius: .6em;
@@ -34,27 +34,27 @@ border-radius: .6em;
 .heading{
   background: #1b619e;
 color: white;
-font-size: 1.8em;
+font-size: 1.1em;
 font-weight: bold;
 border-radius: .3em;
-padding: 5px 15px;
+padding: 1px 10px;
 }
 .infoCustomer{
   display: table;
   width: 100%;
-  font-size: 1.3em;
+  
 }
 .poprow{
   display: table-row;
 }
 .label,.labelValue{
   display: table-cell;
-  padding: 3px;
+  padding-top: 3px;
 }
 .labelValue{
 }
 .label{
-  width: 25%;
+  width: 30%;
   text-align: right;
   font-weight: bold;
 }
@@ -62,4 +62,10 @@ padding: 5px 15px;
   position: absolute;
     bottom: 25px;
     left: calc((100% - 270px)/2);
+}
+.premiumpop{
+  float: right;
+  position: absolute;
+  top: 25px;
+  right: 25px;
 }

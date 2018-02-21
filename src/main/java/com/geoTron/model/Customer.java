@@ -3,30 +3,59 @@ package com.geoTron.model;
 public class Customer {
 	String uid;
 	String name;
-	int policy_num;
 	String address;
-	String vehicle_number;
+	String phone_no;
+	String license_no;
 	String vehicle_type;
-	int premium;
 	String city;
 	double lat;
 	double lon;
-	
+	Vehicle vehicle;
+	PolicyCoverage policy;
 	public Customer() {
 		super();
 	}
-	public Customer(String uid, String name, int policy_num, String address, String vehicle_number, String vehicle_type, int premium, String city, double lat, double lon) {
+	public Customer(String uid, String name, String address,String phone_no, String license_no, String vehicle_type,String city, double lat, double lon,Vehicle vehicle, PolicyCoverage policy) {
 		super();
 		this.uid = uid;
 		this.name = name;
-		this.policy_num = policy_num;
 		this.address = address;
-		this.vehicle_number = vehicle_number;
+		this.phone_no = phone_no;
+		this.license_no = license_no;
 		this.vehicle_type = vehicle_type;
-		this.premium = premium;
 		this.city = city;
 		this.lat = lat;
 		this.lon = lon;
+		this.vehicle = vehicle;
+		this.policy = policy;
+	}
+	
+	
+	public String getPhone_no() {
+		return phone_no;
+	}
+	public void setPhone_no(String phone_no) {
+		this.phone_no = phone_no;
+	}
+	public String getLicense_no() {
+		return license_no;
+	}
+	public void setLicense_no(String license_no) {
+		this.license_no = license_no;
+	}
+	
+	
+	public Vehicle getVehicle() {
+		return vehicle;
+	}
+	public void setVehicle(Vehicle vehicle) {
+		this.vehicle = vehicle;
+	}
+	public PolicyCoverage getPolicy() {
+		return policy;
+	}
+	public void setPolicy(PolicyCoverage policy) {
+		this.policy = policy;
 	}
 	public String getUid() {
 		return uid;
@@ -40,35 +69,17 @@ public class Customer {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getPolicy_num() {
-		return policy_num;
-	}
-	public void setPolicy_num(int policy_num) {
-		this.policy_num = policy_num;
-	}
 	public String getAddress() {
 		return address;
 	}
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getVehicleNumber() {
-		return vehicle_number;
-	}
-	public void setVehicleNumber(String vehicle_number) {
-		this.vehicle_number = vehicle_number;
-	}
 	public String getVehicleType() {
 		return vehicle_type;
 	}
 	public void setVehicleType(String vehicle_type) {
 		this.vehicle_type = vehicle_type;
-	}
-	public int getPremiun() {
-		return premium;
-	}
-	public void setPremium(int premium) {
-		this.premium = premium;
 	}
 	public String getCity() {
 		return city;

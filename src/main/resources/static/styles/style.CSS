@@ -39,7 +39,7 @@ html,body{
 }
 .icon:before{
   content: "";
-  background: #3690115e;
+  background: rgba(144,123, 17, 0.369);
   position: absolute;
   top: 1%;
   left: -7%;
