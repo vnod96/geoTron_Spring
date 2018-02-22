@@ -1,7 +1,7 @@
 <div class="popup">
     <div id="close" title="close" onclick="closeCustomerinfo();"></div>
     <div class="mainContainer">
-      <div class="containerpop"  style="height:25.1%;">
+      <div class="containerpop"  style="height:32%;">
         <div class="heading">
           Customer Information
         </div>
@@ -51,7 +51,7 @@
               <div class="poprow">
                   <div class="label">Policy Period:</div><div id="pop_period" class="labelValue"></div>
               </div>
-              <div class="poprow">
+              <div class="poprow electricbox">
                 <div class="label">Current Premium:</div><div class="pop_premium" class="labelValue"></div>
             </div>
               
@@ -72,8 +72,8 @@
               <div class="poprow">
                 <div class="label">Deductibles:</div><div id="pop_deductibles" class="labelValue"></div>
               </div>
-              <div class="poprow">
-                <div class="label">Discount:</div><div id="pop_discount" class="labelValue"></div>
+               <div class="poprow electricbox">
+                <div class="label">Discount(for Electrical Vehicle):</div><div id="pop_discount" class="labelValue"></div>
               </div>
               <hr>
               <div class="poprow">
@@ -82,7 +82,7 @@
             </div>
 
           </div>
-          <div class="containerpop messagemail">
+          <div class="containerpop messagemail electricbox">
             <div class="heading">
               Message
             </div>
@@ -90,7 +90,7 @@
               Your premium will reduced to <span class="pop_premium_aqi"></span> from <span class="pop_premium" ></span>  if you opt to buy a electric vehicle.  
             </div>
           </div>
-        <input type="submit" id="send" name="send"  class="buttonDIV" onclick="closeCustomerinfo();alert('The mail is sent');" value="SEND MAIL"/>
+        <input type="submit" id="send" name="send"  class="buttonDIV electricbox" onclick="closeCustomerinfo();alert('The mail is sent');" value="SEND MAIL"/>
     </div>
 
   </div>

@@ -27,7 +27,7 @@ html,body{
 .icon{
   font-size: 4.4em;
   font-weight: bold;
-  color: #1c629e;
+  color: rgb(17, 146, 82);;
   /* border: 1px solid blue; */
   top: 5%;
   margin-left: 1%;
@@ -39,7 +39,7 @@ html,body{
 }
 .icon:before{
   content: "";
-  background: rgba(18, 144, 17, 0.57);
+  background: rgba(51, 181, 229, 0.4);
   position: absolute;
   top: 1%;
   left: -7%;

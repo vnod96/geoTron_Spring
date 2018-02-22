@@ -61,7 +61,7 @@ padding: 1px 10px;
 }
 #send{
   position: absolute;
-    bottom: 25px;
+    bottom: 15px;
     left: calc((100% - 270px)/2);
 }
 .premiumpop{
@@ -75,4 +75,7 @@ padding: 1px 10px;
 }
 .messagemail{
   width: 96%;
+}
+.pop_premium,.pop_premium_aqi{
+  color: #1b619e;
 }

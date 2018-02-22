@@ -21,7 +21,9 @@ function setValues(customer,aqi){
     if(customer.vehicleType == 'Gasoline'){
         calcRevisedPremium(customer.policy.premium,aqi);
     }else{
-
+        $('.electricbox').hide();
+        
+    $('.pop_premium_aqi').html(customer.policy.premium).css('color','green');
     }
     
 }
