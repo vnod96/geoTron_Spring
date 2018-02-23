@@ -3,6 +3,12 @@ function closeCustomerinfo(){
 }
 
 function setValues(customer,aqi){
+    var curr;
+    if(customer.city=="Los Angeles"){
+        curr="$";
+    }else{
+        curr="Rs.";
+    }
     $('#pop_name').html(customer.name);
     $('#pop_address').html(customer.address);
     $('#pop_phone').html(customer.phone_no);
@@ -13,22 +19,22 @@ function setValues(customer,aqi){
     $('#pop_odometer').html(customer.vehicle.odometer);
     $('#pop_pn').html(customer.policy.pol_no);
     $('#pop_period').html(customer.policy.pol_period);
-    $('#pop_bodily').html(customer.policy.bodily);
-    $('#pop_collision').html(customer.policy.collision);
-    $('#pop_comp').html(customer.policy.comprehensive);
-    $('#pop_deductibles').html(customer.policy.deductibles);
-    $('.pop_premium').html(customer.policy.premium);
+    $('#pop_bodily').html(curr+''+customer.policy.bodily);
+    $('#pop_collision').html(curr+''+customer.policy.collision);
+    $('#pop_comp').html(curr+''+customer.policy.comprehensive);
+    $('#pop_deductibles').html(curr+''+customer.policy.deductibles);
+    $('.pop_premium').html(curr+''+customer.policy.premium);
     if(customer.vehicleType == 'Gasoline'){
-        calcRevisedPremium(customer.policy.premium,aqi);
+        calcRevisedPremium(customer.policy.premium,aqi,curr);
     }else{
         $('.electricbox').hide();
         
-    $('.pop_premium_aqi').html(customer.policy.premium).css('color','green');
+    $('.pop_premium_aqi').html(curr+''+customer.policy.premium).css('color','green');
     }
     
 }
 
-function calcRevisedPremium(premium,aqi){
+function calcRevisedPremium(premium,aqi,curr){
     
     var spectrum = [
         {a:0,  b:0},
@@ -50,6 +56,6 @@ function calcRevisedPremium(premium,aqi){
         }
     }
     $('#pop_discount').html(percentage +'%');
-    $('.pop_premium_aqi').html(premium*((100 - percentage)/100));
+    $('.pop_premium_aqi').html(curr+''+(premium*((100 - percentage)/100)));
     
 }
