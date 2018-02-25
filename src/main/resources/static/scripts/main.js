@@ -32,6 +32,7 @@ $('#search').click(function(){
 $('#locate').click(function(){
   showCustomers(city);
 });
+$('#legendbtn').click(openLegendPOPUP);
 
 function searchAQI(city){
   if(cities[city]){
@@ -113,7 +114,7 @@ function aqiColor(aqi) {
 function colorize(aqi, specie ) {
   specie = specie||"aqi"
   if (["pm25","pm10","no2","so2","co","o3","aqi","t"].indexOf(specie)<0) return aqi;
-  if(specie == 't') return $("<div/>").html(aqi).addClass('poll-data');
+  if(specie == 't') return $("<div/>").html(aqi+'<sup>o</sup>C').addClass('poll-data');
   let i=0;
   for (i=0;i<spectrum.length-2;i++) {
   if (aqi=="-"||aqi<=spectrum[i].a) break;
@@ -198,9 +199,13 @@ function openCustomerPOPUP(customer){
   var popup = $("#popBox");
   popup.load("popUp.html",function(){
     console.log($(this));
-    setValues(customer,global_aqi);
+    setValues(customer,global_aqi,aqiColor(global_aqi));
   });
   //
+}
+function openLegendPOPUP(ustomer){
+  var popup = $("#LegendpopBox");
+  popup.load("legends.html");
 }
 
 /* $.getJSON("/customers/Chennai",function(response){

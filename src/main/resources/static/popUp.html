@@ -1,4 +1,4 @@
-<div class="popup">
+<div class="popup" id="custPOP">
     <div id="close" title="close" onclick="closeCustomerinfo();"></div>
     <div class="mainContainer">
       <div class="containerpop"  style="height:32%;">
@@ -73,7 +73,7 @@
                 <div class="label">Deductibles:</div><div id="pop_deductibles" class="labelValue"></div>
               </div>
                <div class="poprow electricbox">
-                <div class="label">Discount(for Electrical Vehicle):</div><div id="pop_discount" class="labelValue"></div>
+                <div class="label">Discount(for Electrical Vehicle):</div><div class="pop_discount" class="labelValue"></div>
               </div>
               <hr>
               <div class="poprow">
@@ -87,7 +87,7 @@
               Message
             </div>
             <div class="infoCustomer" style="padding-top:5px;"> 
-              Your premium will reduced to <span class="pop_premium_aqi"></span> from <span class="pop_premium" ></span>  if you opt to buy a electric vehicle.  
+              The quality of air in your city is <span id="popaqi"></span>. We will give a <span class="pop_discount"></span> on the total premium. Your premium will reduced to <span class="pop_premium_aqi"></span> from <span class="pop_premium" ></span>  if you opt to buy a electric vehicle.  
             </div>
           </div>
         <input type="submit" id="send" name="send"  class="buttonDIV electricbox" onclick="closeCustomerinfo();alert('The mail is sent');" value="SEND MAIL"/>

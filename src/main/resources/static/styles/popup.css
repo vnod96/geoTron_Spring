@@ -79,3 +79,11 @@ padding: 1px 10px;
 .pop_premium,.pop_premium_aqi{
   color: #1b619e;
 }
+#legend-short td{
+  padding:0 10px;
+}
+
+#legend-short thead{
+  background: rgba(27, 97, 158, 0.2);
+font-weight: bold;
+}

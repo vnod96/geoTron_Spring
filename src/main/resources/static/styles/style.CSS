@@ -149,3 +149,9 @@ outline: none;
   border-radius: .5em;
   font-size: .7em;
 }
+#legendbtn{
+
+  font-size: .8em;
+  text-align: right;
+  color: #1b619e;
+}

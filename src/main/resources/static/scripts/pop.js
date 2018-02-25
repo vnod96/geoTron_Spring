@@ -1,8 +1,11 @@
 function closeCustomerinfo(){
     $('#popBox').empty();
 }
+function closeLegend(){
+    $('#LegendpopBox').empty();
+}
 
-function setValues(customer,aqi){
+function setValues(customer,aqi,color){
     var curr;
     if(customer.city=="Los Angeles"){
         curr="$";
@@ -25,16 +28,16 @@ function setValues(customer,aqi){
     $('#pop_deductibles').html(curr+''+customer.policy.deductibles);
     $('.pop_premium').html(curr+''+customer.policy.premium);
     if(customer.vehicleType == 'Gasoline'){
-        calcRevisedPremium(customer.policy.premium,aqi,curr);
+        calcRevisedPremium(customer.policy.premium,aqi,curr,color);
     }else{
         $('.electricbox').hide();
-        
+        $('#custPOP').css('height','auto');
     $('.pop_premium_aqi').html(curr+''+customer.policy.premium).css('color','green');
     }
     
 }
 
-function calcRevisedPremium(premium,aqi,curr){
+function calcRevisedPremium(premium,aqi,curr,color){
     
     var spectrum = [
         {a:0,  b:0},
@@ -55,7 +58,8 @@ function calcRevisedPremium(premium,aqi,curr){
             percentage = spectrum[i].b;
         }
     }
-    $('#pop_discount').html(percentage +'%');
+    $('#popaqi').html(aqi).css('color',color);
+    $('.pop_discount').html(percentage +'%');
     $('.pop_premium_aqi').html(curr+''+(premium*((100 - percentage)/100)));
     
 }
